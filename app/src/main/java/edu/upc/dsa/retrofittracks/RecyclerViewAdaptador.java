@@ -1,6 +1,6 @@
 package edu.upc.dsa.retrofittracks;
 
-import edu.upc.dsa.retrofittracks.models.Gadget;
+import edu.upc.dsa.retrofittracks.models.Map;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,20 +15,20 @@ import java.util.List;
 public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdaptador.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView id,cost,description;
-        ImageView fotoGadget;
+        ImageView fotoMap;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             id=(TextView)itemView.findViewById(R.id.tvid);
-            cost=(TextView)itemView.findViewById(R.id.tvcost);
+            cost=(TextView)itemView.findViewById(R.id.tvname);
             description=(TextView)itemView.findViewById(R.id.tvdescription);
-            fotoGadget=(ImageView) itemView.findViewById(R.id.imgGadget);
+            fotoMap =(ImageView) itemView.findViewById(R.id.imgMap);
         }
     }
-    public List<Gadget> gadgets;
+    public List<Map> maps;
 
-    public RecyclerViewAdaptador(List<Gadget> gadgets) {
-        this.gadgets = gadgets;
+    public RecyclerViewAdaptador(List<Map> maps) {
+        this.maps = maps;
     }
 
     @NonNull
@@ -41,15 +41,15 @@ public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.id.setText(gadgets.get(position).getId());
-        holder.description.setText(gadgets.get(position).getDescription());
-        holder.cost.setText(Integer.toString(gadgets.get(position).getCost()));
-        holder.fotoGadget.setImageResource(gadgets.get(position).getUnityShape());
+        holder.id.setText(maps.get(position).getId());
+        holder.description.setText(maps.get(position).getType());
+        holder.cost.setText(maps.get(position).getName());
+        holder.fotoMap.setImageResource(R.drawable.paisaje);
     }
 
     @Override
     public int getItemCount() {
-        return gadgets.size();
+        return maps.size();
     }
 }
 
