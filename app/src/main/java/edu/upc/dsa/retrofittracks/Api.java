@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface Api {
     @PUT("maps")
-    Call<Map> updateMap(@Body Map map);
+    Call<Void> updateMap(@Body Map map);
 
     @DELETE("maps/{id_map}")
     Call<Void> deleteMap(@Path("id_map") String id );
