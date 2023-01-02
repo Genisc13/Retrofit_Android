@@ -16,6 +16,6 @@ public interface Api {
     @POST("shop/user/login")
     Call<Map> logIn(@Body Map map);
 
-    @GET("shop/gadget/all")
-    Call<List<Map>> getGadgets();
+    @GET("maps")
+    Call<List<Map>> getMaps();
 }

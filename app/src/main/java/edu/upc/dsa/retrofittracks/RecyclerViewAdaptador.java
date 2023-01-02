@@ -10,26 +10,43 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.List;
 
+
 public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdaptador.ViewHolder> {
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView id,cost,description;
+
+    public List<Map> maps;
+    public ViewHolder viewHolder;
+
+    private static RecyclerViewClickListener itemListener;
+
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        private TextView id, name,description,size;
         ImageView fotoMap;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             id=(TextView)itemView.findViewById(R.id.tvid);
-            cost=(TextView)itemView.findViewById(R.id.tvname);
+            name =(TextView)itemView.findViewById(R.id.tvname);
             description=(TextView)itemView.findViewById(R.id.tvdescription);
+            size=(TextView)itemView.findViewById(R.id.tvsize);
             fotoMap =(ImageView) itemView.findViewById(R.id.imgMap);
         }
-    }
-    public List<Map> maps;
 
-    public RecyclerViewAdaptador(List<Map> maps) {
-        this.maps = maps;
+        @Override
+        public void onClick(View view) {
+            itemListener.recyclerViewListClicked(this.getLayoutPosition());
+        }
     }
+
+
+    public RecyclerViewAdaptador(List<Map> maps,RecyclerViewClickListener itemListener) throws IOException {
+        this.maps = maps;
+        this.itemListener=itemListener;
+    }
+
+
 
     @NonNull
     @Override
@@ -43,7 +60,8 @@ public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.id.setText(maps.get(position).getId());
         holder.description.setText(maps.get(position).getType());
-        holder.cost.setText(maps.get(position).getName());
+        holder.name.setText(maps.get(position).getName());
+        holder.size.setText(maps.get(position).getSize());
         holder.fotoMap.setImageResource(R.drawable.paisaje);
     }
 
