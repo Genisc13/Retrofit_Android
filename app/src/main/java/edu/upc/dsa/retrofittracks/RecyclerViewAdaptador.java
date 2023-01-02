@@ -32,6 +32,7 @@ public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdap
             description=(TextView)itemView.findViewById(R.id.tvdescription);
             size=(TextView)itemView.findViewById(R.id.tvsize);
             fotoMap =(ImageView) itemView.findViewById(R.id.imgMap);
+            itemView.setOnClickListener(this);
         }
 
         @Override

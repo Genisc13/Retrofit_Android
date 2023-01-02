@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         Call<List<Map>> call = APIservice.getMaps();
         try {
             List<Map> maps=call.execute().body();
-            adaptadorGadget = new RecyclerViewAdaptador(maps,this::recyclerViewListClicked);
+            adaptadorGadget = new RecyclerViewAdaptador(maps,this);
         }
         catch (IOException e){
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
     @Override
     public void recyclerViewListClicked(int position) {
         Map map=adaptadorGadget.maps.get(position);
-        Intent intent=new Intent(MainActivity.this,MainActivity.class);
+        Intent intent=new Intent(MainActivity.this,MapActivity.class);
         Bundle adapterInfo = new Bundle();
         adapterInfo.putString("id",map.getId());
         adapterInfo.putString("name",map.getName());
