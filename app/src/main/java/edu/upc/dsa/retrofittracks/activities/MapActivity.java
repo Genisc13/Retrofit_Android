@@ -81,6 +81,20 @@ public class MapActivity extends AppCompatActivity {
 
             }
         });
+        refreshTextViews();
+    }
+    public void deleteMap(View view) {
+        Call<Void> call = apiService.deleteMap(id);
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {}
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {}
+        });
+        Intent intentTracks = new Intent(MapActivity.this, MainActivity.class);
+        MapActivity.this.startActivity(intentTracks);
     }
     private void refreshTextViews(){
         id_tv.setText(this.id);
