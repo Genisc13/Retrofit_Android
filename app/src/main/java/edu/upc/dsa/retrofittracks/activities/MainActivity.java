@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,5 +54,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewClick
         adapterInfo.putString("size",map.getSize());
         intent.putExtras(adapterInfo);
         MainActivity.this.startActivity(intent);
+    }
+    public void create_button(View view){
+        Intent intentTracks = new Intent(MainActivity.this, addMapActivity.class);
+        MainActivity.this.startActivity(intentTracks);
     }
 }

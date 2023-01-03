@@ -16,6 +16,9 @@ public interface Api {
     @PUT("maps")
     Call<Void> updateMap(@Body Map map);
 
+    @POST("maps")
+    Call<Map> addMap(@Body Map map);
+
     @DELETE("maps/{id_map}")
     Call<Void> deleteMap(@Path("id_map") String id );
 
